@@ -1,0 +1,32 @@
+services:
+  postgres:
+    restart: always
+    image: postgres:16
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  django:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: ${DOCKER_BUILD_TARGET}
+    container_name: django_app
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
