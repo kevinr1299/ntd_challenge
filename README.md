@@ -15,7 +15,7 @@ To deploy locally or remotely you'll need:
 ### Installation
 1. Clone the repo
    ```sh
-   git clone git@gitlab.com:cpicardgroup/digital/MYCA/myca_v2_backend.git
+   git clone git@github.com:kevinr1299/ntd_challenge.git
    ```
 2. create file `.env`, clone from `.env.template ` or run the command
    ```sh
