@@ -16,8 +16,27 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,
+)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    # Include API URLs
+    path("api/v1/", include("ntd_challenge.api_urls", namespace="api")),
+    # API schema and documentation
+    path("api/schema/", SpectacularAPIView.as_view(), name="api-schema"),
+    path(
+        "api/schema/swagger/",
+        SpectacularSwaggerView.as_view(url_name="api-schema"),
+        name="api-schema-swagger",
+    ),
+    path(
+        "api/schema/redoc/",
+        SpectacularRedocView.as_view(url_name="api-schema"),
+        name="api-schema-redoc",
+    ),
 ]

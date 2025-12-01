@@ -36,8 +36,8 @@ RUN uv pip sync --system requirements.lock
 RUN python manage.py collectstatic --noinput
 RUN pre-commit install
 
-# Migrate database
-RUN python manage.py migrate
+# Run application
+CMD ["python", "manage.py", "migrate"]
 
 
 FROM base as production
