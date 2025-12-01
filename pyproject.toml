@@ -17,10 +17,20 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "faker>=38.2.0",
     "pre-commit>=4.5.0",
     "pytest>=9.0.1",
+    "pytest-cov>=7.0.0",
+    "pytest-django>=4.11.1",
 ]
 
 [tool.ruff]
 line-length = 88
 lint.select = ["E", "F", "I"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "ntd_challenge.settings"
+python_files = ["test_*.py", "*_test.py", "tests.py"]
+filterwarnings = [
+    "ignore::django.utils.deprecation.RemovedInDjango60Warning"
+]

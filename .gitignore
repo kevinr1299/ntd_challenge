@@ -14,3 +14,7 @@ wheels/
 
 # Mediafiles
 staticfiles/
+
+# IDE files
+.vscode/
+.idea/
