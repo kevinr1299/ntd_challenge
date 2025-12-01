@@ -21,10 +21,14 @@ COPY . .
 RUN chmod +x start.sh
 
 
+##############################################
+# Develop stage
+# Used by: VS Code Dev Containers
+##############################################
 FROM base as develop
 
 # Install git for development
-RUN apk add --no-cache git
+RUN apk update && apk add --no-cache git make
 
 # Generate a pip-compatible lock
 RUN uv pip compile --group dev pyproject.toml -o requirements.lock
@@ -35,9 +39,6 @@ RUN uv pip sync --system requirements.lock
 # Collect static files
 RUN python manage.py collectstatic --noinput
 RUN pre-commit install
-
-# Add make commands
-RUN apk update && apk add make
 
 # Run application
 CMD ["python", "manage.py", "migrate"]

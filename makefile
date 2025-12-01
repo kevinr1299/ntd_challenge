@@ -11,10 +11,13 @@ start-all-containers: ##@commands Start all containers
 deploy:
 	DOCKER_BUILD_TARGET=production make build start-all-containers
 
+dev:
+	DOCKER_BUILD_TARGET=develop make build start-all-containers
 
 #############
 #DEVELOPMENT#
 #############
+
 test:
 	pytest --cov
 
