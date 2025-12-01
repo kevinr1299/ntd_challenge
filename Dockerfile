@@ -36,6 +36,9 @@ RUN uv pip sync --system requirements.lock
 RUN python manage.py collectstatic --noinput
 RUN pre-commit install
 
+# Add make commands
+RUN apk update && apk add make
+
 # Run application
 CMD ["python", "manage.py", "migrate"]
 

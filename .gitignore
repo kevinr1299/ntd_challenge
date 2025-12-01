@@ -15,6 +15,9 @@ wheels/
 # Mediafiles
 staticfiles/
 
+# Coverage reports
+.coverage
+
 # IDE files
 .vscode/
 .idea/
