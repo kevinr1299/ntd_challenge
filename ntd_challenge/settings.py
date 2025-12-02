@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     "corsheaders",
     # Local apps
     "planets",
+    "books",
+    "users",
 ]
 
 MIDDLEWARE = [
